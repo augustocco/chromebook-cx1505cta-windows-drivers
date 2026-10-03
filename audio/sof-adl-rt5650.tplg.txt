@@ -1,0 +1,619 @@
+manifest: [8, 62, 40, 9, 8, 0]
+blocks: [('MANIFEST', 0, 1), ('DAPM_WIDGET', 1, 8), ('DAPM_WIDGET', 2, 6), ('DAPM_WIDGET', 3, 6), ('DAPM_WIDGET', 5, 6), ('DAPM_WIDGET', 6, 6), ('DAPM_WIDGET', 7, 6), ('DAPM_WIDGET', 8, 6), ('DAPM_WIDGET', 9, 4), ('DAPM_WIDGET', 10, 4), ('DAPM_WIDGET', 13, 4), ('DAPM_WIDGET', 14, 4), ('DAPM_WIDGET', 29, 2), ('PCM', 0, 9), ('BACKEND_LINK', 0, 8), ('DAPM_GRAPH', 0, 1), ('DAPM_GRAPH', 1, 6), ('DAPM_GRAPH', 2, 4), ('DAPM_GRAPH', 3, 4), ('DAPM_GRAPH', 5, 4), ('DAPM_GRAPH', 6, 4), ('DAPM_GRAPH', 7, 4), ('DAPM_GRAPH', 8, 4), ('DAPM_GRAPH', 9, 3), ('DAPM_GRAPH', 10, 2), ('DAPM_GRAPH', 13, 2), ('DAPM_GRAPH', 14, 2)]
+
+WIDGET [1] aif_in     PCM0P                        sname='Low Latency Playback 0' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [1] pga        PGA1.1                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '1 Master Playback Volume'
+
+WIDGET [1] effect     MUXDEMUX1.0                  sname='' kctl=1
+    SOF_TKN_COMP_UUID                    c4b26868-1430-470e-a089-15d1c77f851a
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_PROCESS_TYPE                 DEMUX
+    kcontrol bytes 'DEMUX1'
+
+WIDGET [1] buffer     BUF1.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     7680
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [1] buffer     BUF1.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     7680
+    SOF_TKN_BUF_CAPS                     65
+
+WIDGET [1] buffer     BUF1.2                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     7680
+    SOF_TKN_BUF_CAPS                     65
+
+WIDGET [1] dai_in     SSP1.OUT                     sname='SSP1-Codec' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    1
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s24le
+
+WIDGET [1] scheduler  PIPELINE.1.SSP1.OUT          sname='SSP1.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 10000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [2] aif_in     PCM1P                        sname='Passthrough Playback 1' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [2] pga        PGA2.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '2 Master Playback Volume'
+
+WIDGET [2] buffer     BUF2.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [2] buffer     BUF2.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [2] dai_in     SSP0.OUT                     sname='SSP0-Codec' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    0
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s24le
+
+WIDGET [2] scheduler  PIPELINE.2.SSP0.OUT          sname='SSP0.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [3] aif_out    PCM1C                        sname='Passthrough Capture 1' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [3] pga        PGA3.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        0
+    SOF_TKN_VOLUME_RAMP_STEP_MS          250
+    kcontrol mixer '3 Master Capture Volume'
+
+WIDGET [3] buffer     BUF3.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [3] buffer     BUF3.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [3] dai_out    SSP0.IN                      sname='SSP0-Codec' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    0
+    SOF_TKN_DAI_DIRECTION                1
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s24le
+
+WIDGET [3] scheduler  PIPELINE.3.SSP0.IN           sname='SSP0.IN' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [5] aif_in     PCM2P                        sname='Passthrough Playback 2' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [5] pga        PGA5.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '5 Master Playback Volume'
+
+WIDGET [5] buffer     BUF5.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [5] buffer     BUF5.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [5] dai_in     HDA0.OUT                     sname='iDisp1' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    0
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_COMP_FORMAT                  s32le
+
+WIDGET [5] scheduler  PIPELINE.5.HDA0.OUT          sname='HDA0.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [6] aif_in     PCM3P                        sname='Passthrough Playback 3' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [6] pga        PGA6.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '6 Master Playback Volume'
+
+WIDGET [6] buffer     BUF6.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [6] buffer     BUF6.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [6] dai_in     HDA1.OUT                     sname='iDisp2' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    1
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_COMP_FORMAT                  s32le
+
+WIDGET [6] scheduler  PIPELINE.6.HDA1.OUT          sname='HDA1.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [7] aif_in     PCM4P                        sname='Passthrough Playback 4' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [7] pga        PGA7.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '7 Master Playback Volume'
+
+WIDGET [7] buffer     BUF7.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [7] buffer     BUF7.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [7] dai_in     HDA2.OUT                     sname='iDisp3' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    2
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_COMP_FORMAT                  s32le
+
+WIDGET [7] scheduler  PIPELINE.7.HDA2.OUT          sname='HDA2.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [8] aif_in     PCM5P                        sname='Passthrough Playback 5' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [8] pga        PGA8.0                       sname='' kctl=1
+    SOF_TKN_COMP_UUID                    b77e677e-5ff4-4188-af14-fba8bdbf8682
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_COMP_FORMAT                  s32le
+    SOF_TKN_VOLUME_RAMP_STEP_TYPE        2
+    SOF_TKN_VOLUME_RAMP_STEP_MS          20
+    kcontrol mixer '8 Master Playback Volume'
+
+WIDGET [8] buffer     BUF8.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [8] buffer     BUF8.1                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     768
+    SOF_TKN_BUF_CAPS                     113
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [8] dai_in     HDA3.OUT                     sname='iDisp4' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    3
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_COMP_FORMAT                  s32le
+
+WIDGET [8] scheduler  PIPELINE.8.HDA3.OUT          sname='HDA3.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [9] aif_out    PCM6C                        sname='Passthrough Capture 6' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [9] buffer     BUF9.0                       sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     7680
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [9] out_drv    ECHO REF 9                   sname='' kctl=0
+
+WIDGET [9] scheduler  PIPELINE.9.PCM6C             sname='PCM6C' kctl=0
+    SOF_TKN_SCHED_PERIOD                 10000
+    SOF_TKN_SCHED_PRIORITY               1
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   50000
+
+WIDGET [10] aif_out    PCM99C                       sname='Passthrough Capture 99' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 1
+
+WIDGET [10] buffer     BUF10.0                      sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     1536
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [10] dai_out    DMIC0.IN                     sname='dmic01' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    0
+    SOF_TKN_DAI_DIRECTION                1
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 1
+    SOF_TKN_DAI_TYPE                     DMIC
+    SOF_TKN_COMP_FORMAT                  s32le
+
+WIDGET [10] scheduler  PIPELINE.10.DMIC0.IN         sname='DMIC0.IN' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   1
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [13] aif_in     PCM7P                        sname='Passthrough Playback 7' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       2
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [13] buffer     BUF13.0                      sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     384
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [13] dai_in     SSP2.OUT                     sname='SSP2-BT' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    2
+    SOF_TKN_DAI_DIRECTION                0
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s16le
+
+WIDGET [13] scheduler  PIPELINE.13.SSP2.OUT         sname='SSP2.OUT' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [14] aif_out    PCM7C                        sname='Passthrough Capture 7' kctl=0
+    SOF_TKN_COMP_UUID                    8b9d100c-6d78-418f-90a3-e0e805d0852b
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       0
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     2
+    SOF_TKN_COMP_CORE_ID                 0
+
+WIDGET [14] buffer     BUF14.0                      sname='' kctl=0
+    SOF_TKN_BUF_SIZE                     64
+    SOF_TKN_BUF_CAPS                     113
+
+WIDGET [14] dai_out    SSP2.IN                      sname='SSP2-BT' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    2
+    SOF_TKN_DAI_DIRECTION                1
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       1
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s16le
+
+WIDGET [14] scheduler  PIPELINE.14.SSP2.IN          sname='SSP2.IN' kctl=0
+    SOF_TKN_SCHED_PERIOD                 1000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+WIDGET [29] dai_out    SSP1.IN                      sname='SSP1-Codec' kctl=0
+    SOF_TKN_COMP_UUID                    c2b00d27-ffbc-4150-a51a-245c79c5e54b
+    SOF_TKN_DAI_INDEX                    1
+    SOF_TKN_DAI_DIRECTION                1
+    SOF_TKN_COMP_PERIOD_SINK_COUNT       3
+    SOF_TKN_COMP_PERIOD_SOURCE_COUNT     0
+    SOF_TKN_COMP_CORE_ID                 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_COMP_FORMAT                  s24le
+
+WIDGET [29] scheduler  PIPELINE.29.SSP1.IN          sname='SSP1.IN' kctl=0
+    SOF_TKN_SCHED_PERIOD                 10000
+    SOF_TKN_SCHED_PRIORITY               0
+    SOF_TKN_SCHED_CORE                   0
+    SOF_TKN_SCHED_FRAMES                 0
+    SOF_TKN_SCHED_TIME_DOMAIN            1
+    SOF_TKN_SCHED_DYNAMIC_PIPELINE       0
+    SOF_TKN_SCHED_MIPS                   5000
+
+ROUTE [0] MUXDEMUX1.0 -> BUF9.0
+ROUTE [1] PCM0P -> BUF1.0
+ROUTE [1] BUF1.0 -> PGA1.1
+ROUTE [1] PGA1.1 -> BUF1.1
+ROUTE [1] BUF1.1 -> MUXDEMUX1.0
+ROUTE [1] MUXDEMUX1.0 -> BUF1.2
+ROUTE [1] BUF1.2 -> SSP1.OUT
+ROUTE [2] PCM1P -> BUF2.0
+ROUTE [2] BUF2.0 -> PGA2.0
+ROUTE [2] PGA2.0 -> BUF2.1
+ROUTE [2] BUF2.1 -> SSP0.OUT
+ROUTE [3] BUF3.0 -> PCM1C
+ROUTE [3] PGA3.0 -> BUF3.0
+ROUTE [3] BUF3.1 -> PGA3.0
+ROUTE [3] SSP0.IN -> BUF3.1
+ROUTE [5] PCM2P -> BUF5.0
+ROUTE [5] BUF5.0 -> PGA5.0
+ROUTE [5] PGA5.0 -> BUF5.1
+ROUTE [5] BUF5.1 -> HDA0.OUT
+ROUTE [6] PCM3P -> BUF6.0
+ROUTE [6] BUF6.0 -> PGA6.0
+ROUTE [6] PGA6.0 -> BUF6.1
+ROUTE [6] BUF6.1 -> HDA1.OUT
+ROUTE [7] PCM4P -> BUF7.0
+ROUTE [7] BUF7.0 -> PGA7.0
+ROUTE [7] PGA7.0 -> BUF7.1
+ROUTE [7] BUF7.1 -> HDA2.OUT
+ROUTE [8] PCM5P -> BUF8.0
+ROUTE [8] BUF8.0 -> PGA8.0
+ROUTE [8] PGA8.0 -> BUF8.1
+ROUTE [8] BUF8.1 -> HDA3.OUT
+ROUTE [9] BUF9.0 -> PCM6C
+ROUTE [9] ECHO REF 9 -> BUF9.0
+ROUTE [9] SSP1.IN -> ECHO REF 9
+ROUTE [10] BUF10.0 -> PCM99C
+ROUTE [10] DMIC0.IN -> BUF10.0
+ROUTE [13] PCM7P -> BUF13.0
+ROUTE [13] BUF13.0 -> SSP2.OUT
+ROUTE [14] BUF14.0 -> PCM7C
+ROUTE [14] SSP2.IN -> BUF14.0
+
+PCM 99 'DMIC' dai='DMIC 99' pb=0 cap=1
+
+PCM 7 'Bluetooth' dai='Bluetooth 7' pb=1 cap=1
+
+PCM 0 'Speakers' dai='Speakers 0' pb=1 cap=0
+
+PCM 1 'Headset' dai='Headset 1' pb=1 cap=1
+
+PCM 2 'HDMI1' dai='HDMI1 2' pb=1 cap=0
+
+PCM 3 'HDMI2' dai='HDMI2 3' pb=1 cap=0
+
+PCM 4 'HDMI3' dai='HDMI3 4' pb=1 cap=0
+
+PCM 5 'HDMI4' dai='HDMI4 5' pb=1 cap=0
+
+PCM 6 'EchoRef' dai='EchoRef 6' pb=0 cap=1
+
+LINK 1 'dmic01' stream='' hw_configs=1 default=1
+    hw 1 fmt=0x0 bclk_p=0 fsync_p=0 mclk=0 bclk=0 fs=0 slots=0 width=0 tx=0x0 rx=0x0
+    SOF_TKN_INTEL_DMIC_DRIVER_VERSION    1
+    SOF_TKN_INTEL_DMIC_CLK_MIN           2400000
+    SOF_TKN_INTEL_DMIC_CLK_MAX           4800000
+    SOF_TKN_INTEL_DMIC_DUTY_MIN          40
+    SOF_TKN_INTEL_DMIC_DUTY_MAX          60
+    SOF_TKN_INTEL_DMIC_SAMPLE_RATE       48000
+    SOF_TKN_INTEL_DMIC_FIFO_WORD_LENGTH  32
+    SOF_TKN_INTEL_DMIC_UNMUTE_RAMP_TIME_MS 200
+    SOF_TKN_INTEL_DMIC_NUM_PDM_ACTIVE    2
+    SOF_TKN_DAI_TYPE                     DMIC
+    SOF_TKN_DAI_INDEX                    0
+    SOF_TKN_INTEL_DMIC_PDM_CTRL_ID       0
+    SOF_TKN_INTEL_DMIC_PDM_MIC_A_Enable  1
+    SOF_TKN_INTEL_DMIC_PDM_MIC_B_Enable  1
+    SOF_TKN_INTEL_DMIC_PDM_POLARITY_A    0
+    SOF_TKN_INTEL_DMIC_PDM_POLARITY_B    0
+    SOF_TKN_INTEL_DMIC_PDM_CLK_EDGE      0
+    SOF_TKN_INTEL_DMIC_PDM_SKEW          0
+    SOF_TKN_INTEL_DMIC_PDM_CTRL_ID       1
+    SOF_TKN_INTEL_DMIC_PDM_MIC_A_Enable  1
+    SOF_TKN_INTEL_DMIC_PDM_MIC_B_Enable  1
+    SOF_TKN_INTEL_DMIC_PDM_POLARITY_A    0
+    SOF_TKN_INTEL_DMIC_PDM_POLARITY_B    0
+    SOF_TKN_INTEL_DMIC_PDM_CLK_EDGE      0
+    SOF_TKN_INTEL_DMIC_PDM_SKEW          0
+
+LINK 8 'SSP2-BT' stream='' hw_configs=3 default=8
+    hw 8 fmt=0x4 bclk_p=0 fsync_p=0 mclk=38400000 bclk=256000 fs=16000 slots=1 width=16 tx=0x1 rx=0x1
+    hw 9 fmt=0x4 bclk_p=0 fsync_p=0 mclk=38400000 bclk=128000 fs=8000 slots=1 width=16 tx=0x1 rx=0x1
+    hw 10 fmt=0x4 bclk_p=1 fsync_p=1 mclk=38400000 bclk=1536000 fs=48000 slots=2 width=16 tx=0x3 rx=0x0
+    SOF_TKN_INTEL_SSP_SAMPLE_BITS        16
+    SOF_TKN_INTEL_SSP_QUIRKS             0
+    SOF_TKN_INTEL_SSP_BCLK_DELAY         0
+    SOF_TKN_INTEL_SSP_CLKS_CONTROL       0
+    SOF_TKN_INTEL_SSP_MCLK_ID            0
+    SOF_TKN_INTEL_SSP_FRAME_PULSE_WIDTH  0
+    SOF_TKN_INTEL_SSP_TDM_PADDING_PER_SLOT 0
+    SOF_TKN_INTEL_SSP_SAMPLE_BITS        16
+    SOF_TKN_INTEL_SSP_QUIRKS             0
+    SOF_TKN_INTEL_SSP_BCLK_DELAY         0
+    SOF_TKN_INTEL_SSP_CLKS_CONTROL       0
+    SOF_TKN_INTEL_SSP_MCLK_ID            0
+    SOF_TKN_INTEL_SSP_FRAME_PULSE_WIDTH  0
+    SOF_TKN_INTEL_SSP_TDM_PADDING_PER_SLOT 0
+    SOF_TKN_INTEL_SSP_SAMPLE_BITS        16
+    SOF_TKN_INTEL_SSP_QUIRKS             0
+    SOF_TKN_INTEL_SSP_BCLK_DELAY         0
+    SOF_TKN_INTEL_SSP_CLKS_CONTROL       0
+    SOF_TKN_INTEL_SSP_MCLK_ID            0
+    SOF_TKN_INTEL_SSP_FRAME_PULSE_WIDTH  0
+    SOF_TKN_INTEL_SSP_TDM_PADDING_PER_SLOT 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_DAI_INDEX                    2
+
+LINK 7 'SSP1-Codec' stream='' hw_configs=1 default=7
+    hw 7 fmt=0x1 bclk_p=1 fsync_p=1 mclk=24576000 bclk=3072000 fs=48000 slots=2 width=32 tx=0x3 rx=0x3
+    SOF_TKN_INTEL_SSP_SAMPLE_BITS        24
+    SOF_TKN_INTEL_SSP_QUIRKS             0
+    SOF_TKN_INTEL_SSP_BCLK_DELAY         0
+    SOF_TKN_INTEL_SSP_CLKS_CONTROL       0
+    SOF_TKN_INTEL_SSP_MCLK_ID            0
+    SOF_TKN_INTEL_SSP_FRAME_PULSE_WIDTH  0
+    SOF_TKN_INTEL_SSP_TDM_PADDING_PER_SLOT 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_DAI_INDEX                    1
+
+LINK 0 'SSP0-Codec' stream='' hw_configs=1 default=0
+    hw 0 fmt=0x1 bclk_p=1 fsync_p=1 mclk=24576000 bclk=3072000 fs=48000 slots=2 width=32 tx=0x3 rx=0x3
+    SOF_TKN_INTEL_SSP_SAMPLE_BITS        24
+    SOF_TKN_INTEL_SSP_QUIRKS             0
+    SOF_TKN_INTEL_SSP_BCLK_DELAY         0
+    SOF_TKN_INTEL_SSP_CLKS_CONTROL       0
+    SOF_TKN_INTEL_SSP_MCLK_ID            0
+    SOF_TKN_INTEL_SSP_FRAME_PULSE_WIDTH  0
+    SOF_TKN_INTEL_SSP_TDM_PADDING_PER_SLOT 0
+    SOF_TKN_DAI_TYPE                     SSP
+    SOF_TKN_DAI_INDEX                    0
+
+LINK 3 'iDisp1' stream='' hw_configs=1 default=3
+    hw 3 fmt=0x0 bclk_p=0 fsync_p=0 mclk=0 bclk=0 fs=0 slots=0 width=0 tx=0x0 rx=0x0
+    SOF_TKN_INTEL_HDA_RATE               48000
+    SOF_TKN_INTEL_HDA_CH                 2
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_DAI_INDEX                    0
+
+LINK 4 'iDisp2' stream='' hw_configs=1 default=4
+    hw 4 fmt=0x0 bclk_p=0 fsync_p=0 mclk=0 bclk=0 fs=0 slots=0 width=0 tx=0x0 rx=0x0
+    SOF_TKN_INTEL_HDA_RATE               48000
+    SOF_TKN_INTEL_HDA_CH                 2
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_DAI_INDEX                    1
+
+LINK 5 'iDisp3' stream='' hw_configs=1 default=5
+    hw 5 fmt=0x0 bclk_p=0 fsync_p=0 mclk=0 bclk=0 fs=0 slots=0 width=0 tx=0x0 rx=0x0
+    SOF_TKN_INTEL_HDA_RATE               48000
+    SOF_TKN_INTEL_HDA_CH                 2
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_DAI_INDEX                    2
+
+LINK 6 'iDisp4' stream='' hw_configs=1 default=6
+    hw 6 fmt=0x0 bclk_p=0 fsync_p=0 mclk=0 bclk=0 fs=0 slots=0 width=0 tx=0x0 rx=0x0
+    SOF_TKN_INTEL_HDA_RATE               48000
+    SOF_TKN_INTEL_HDA_CH                 2
+    SOF_TKN_DAI_TYPE                     HDA
+    SOF_TKN_DAI_INDEX                    3

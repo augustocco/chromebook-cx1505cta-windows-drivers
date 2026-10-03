@@ -1,0 +1,18 @@
+# Repos de referencia y binarios descargados
+src/
+tools/acpica/
+Realtek_Net_*/
+*.cab
+Audio_Intel_SST/
+audio/*.zip
+
+# Salidas de compilación
+x64/
+Debug/
+Release/
+.vs/
+*.user
+__pycache__/
+
+# notas y scripts de desarrollo (no se publican)
+local/

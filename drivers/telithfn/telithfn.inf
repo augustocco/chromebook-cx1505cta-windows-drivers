@@ -1,0 +1,64 @@
+;
+; telithfn.inf -- fn key filter for the Telith (ASUS Chromebook CX15) keyboard.
+; Extension INF on top of CoolStar's croskeyboard.inf: it adds telithfn below
+; croskeyboard in the keyboard stack (kbdclass -> croskeyboard -> telithfn -> i8042prt).
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Extension
+ClassGuid   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+ExtensionId = {7c2f3b8e-5d41-4a6e-9f1b-6a0e2c9d4f15}
+Provider    = %ProviderName%
+DriverVer   = 10/03/2026,0.1.0.0
+CatalogFile = telithfn.cat
+PnpLockdown = 1
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+telithfn.sys = 1
+
+[DestinationDirs]
+TelithFn.CopyFiles = 13
+
+[Manufacturer]
+%ProviderName% = TelithFn,NTamd64.10.0...16299
+
+[TelithFn.NTamd64.10.0...16299]
+%TelithFn.DeviceDesc% = TelithFn_Inst, ACPI\GOOG000A
+
+[TelithFn_Inst.NT]
+CopyFiles = TelithFn.CopyFiles
+
+[TelithFn.CopyFiles]
+telithfn.sys
+
+[TelithFn_Inst.NT.HW]
+AddReg = TelithFn_Inst.HW.AddReg
+
+[TelithFn_Inst.HW.AddReg]
+; first entry = lowest filter: telithfn sees the raw keys before croskeyboard
+HKR,,"UpperFilters",0x00010000,"telithfn","croskeyboard"
+
+[TelithFn_Inst.NT.Services]
+AddService = telithfn,,TelithFn_Service
+
+[TelithFn_Service]
+DisplayName    = %TelithFn.SvcDesc%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\telithfn.sys
+
+[TelithFn_Inst.NT.Wdf]
+KmdfService = telithfn, TelithFn_wdfsect
+
+[TelithFn_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+ProviderName         = "Telith Audio Project"
+DiskName             = "Telith fn key filter"
+TelithFn.DeviceDesc  = "Tecla fn del teclado Chromebook (Telith)"
+TelithFn.SvcDesc     = "Telith fn key filter"
