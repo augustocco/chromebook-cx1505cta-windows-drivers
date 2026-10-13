@@ -31,6 +31,11 @@ work on Windows. No paid driver is needed.
 >   driver. Keep Microsoft Defender on, and use a standard (non-administrator)
 >   account for daily work.
 > - Secure Boot must be off, so boot-level malware is not blocked.
+> - **Smart App Control** and **Memory integrity** (Core isolation) in Windows
+>   Security must stay **off**. Either one blocks test-signed drivers even in
+>   Test Mode: the sound stops and, if `telithfn` is installed, the built-in
+>   keyboard stops working too. Depending on the Windows version, Smart App
+>   Control cannot be turned back on once it is off.
 > - Some anti-cheat systems (for example Vanguard or FACEIT) refuse to run, and
 >   some DRM-protected video may play at lower quality.
 > - A "Test Mode" watermark is shown on the desktop.

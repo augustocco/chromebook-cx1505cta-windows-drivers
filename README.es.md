@@ -32,6 +32,13 @@ internos y las teclas de la fila superior, sin ningún driver de pago.
 >   activo y usa una cuenta estándar (no administradora) para el día a día.
 > - Secure Boot tiene que estar desactivado, así que no se bloquea el malware de
 >   arranque.
+> - El **Control inteligente de aplicaciones** (Smart App Control) y la
+>   **Integridad de memoria** (Aislamiento del núcleo) de Seguridad de Windows
+>   deben quedar **desactivados**. Cualquiera de los dos bloquea los drivers
+>   firmados de prueba aunque el modo de prueba esté activo: se pierde el sonido
+>   y, si está instalado `telithfn`, también deja de funcionar el teclado
+>   integrado. Según la versión de Windows, el Control inteligente de
+>   aplicaciones no se puede volver a activar una vez apagado.
 > - Algunos antitrampas de juegos (por ejemplo Vanguard o FACEIT) no funcionan,
 >   y algunos videos con DRM pueden reproducirse con menos calidad.
 > - Aparece la marca de agua «Modo de prueba» en el escritorio.
